@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 
 class Event(models.Model):
@@ -6,3 +8,5 @@ class Event(models.Model):
     comments = models.TextField()
     start_at = models.DateTimeField()
 
+    def has_started(self):
+        return self.start_at > datetime.datetime.now()
