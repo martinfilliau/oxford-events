@@ -1,5 +1,9 @@
 # Django settings for oxford_events project.
 
+import os
+
+project_root = os.path.normpath(os.path.dirname(__file__))
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -106,9 +110,7 @@ ROOT_URLCONF = 'oxford_events.urls'
 WSGI_APPLICATION = 'oxford_events.wsgi.application'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    (os.path.join(project_root, 'templates')),
 )
 
 INSTALLED_APPS = (
@@ -120,6 +122,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'south',
+    'haystack',
     'oxford_events.events',
     'oxford_events.places',
 )
@@ -151,4 +154,12 @@ LOGGING = {
             'propagate': True,
         },
     }
+}
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://127.0.0.1:9200/',
+        'INDEX_NAME': 'oxfordevents',
+    },
 }
