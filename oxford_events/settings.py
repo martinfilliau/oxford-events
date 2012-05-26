@@ -123,6 +123,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'south',
     'haystack',
+    'tastypie',
     'oxford_events.events',
     'oxford_events.places',
 )

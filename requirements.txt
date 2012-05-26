@@ -5,3 +5,4 @@ South>=0.7.4
 -e git+https://github.com/toastdriven/django-haystack.git@master#egg=django-haystack
 requests
 -e git+https://github.com/toastdriven/pyelasticsearch.git@master#egg=pyelasticsearch
+django-tastypie>=0.9.11
